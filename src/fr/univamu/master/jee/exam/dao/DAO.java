@@ -25,9 +25,11 @@ public abstract class DAO {
 
 	public abstract Person findPerson(int id);
 
-	public abstract void savePerson(Person p);
+	public abstract Person updatePerson(Person p);
 	
-	public abstract void addPerson(Person p);
+	public abstract Person addPerson(Person p);
+	
+	public abstract Person removePerson(int id);
 
 	public EntityManagerFactory getFactory() {
 		return factory;

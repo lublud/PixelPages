@@ -10,9 +10,9 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 			<property name="hibernate.format_sql" value="true" />
 			<!-- parametres de connection JDBC -->
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://addr:port/PixelPages" />
-			<property name="hibernate.connection.username" value="username" />
-			<property name="hibernate.connection.password" value="password" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://82.227.113.13:7342/PixelPages" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="mysql" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>

@@ -43,8 +43,29 @@ public class PersonDAOTest {
 
 	@Test
 	public void testAddFindPerson() {
-		dao.addPerson(p);
+		p = dao.addPerson(p);
 		assertEquals(p.getIdPerson(), dao.findPerson(p.getIdPerson()).getIdPerson());
-	}
+		dao.removePerson(p.getIdPerson());
+	} // testAddFindPerson()
+	
+	@Test
+	public void testUpdatePerson() {
+		String website = "jmlp.com";
+		p = dao.addPerson(p);
+		p.setWebsite(website);
+		p = dao.updatePerson(p);
+		assertEquals(website, dao.findPerson(p.getIdPerson()).getWebsite());
+		dao.removePerson(p.getIdPerson());
+	} // testUpdatePerson()
+	
+	@Test
+	public void testRemovePerson() {
+		int tmp = -1;
+		p = dao.addPerson(p);
+		tmp = p.getIdPerson();
+		p = dao.removePerson(p.getIdPerson());
+		assertEquals(tmp, p.getIdPerson());
+	} // testRemovePerson()
+	
 
 }
