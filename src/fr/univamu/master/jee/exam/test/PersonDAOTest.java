@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +18,7 @@ import fr.univamu.master.jee.exam.dao.concret.PersonDAO;
 public class PersonDAOTest {
 
 	static DAO dao;
-	Person p;
+	Person p, pp;
 
 	@BeforeClass
 	public static void beforeAll() {
@@ -39,6 +40,13 @@ public class PersonDAOTest {
 		p.setBirthdate(simpleDateFormat.parse("02/29/1992"));
 		p.setEmail("jmlp@bakery.com");
 		p.setPassword("superDeadlyPassword");
+		
+		pp = new Person();
+		pp.setFirstName("Jean");
+		pp.setLastName("Jean");
+		pp.setBirthdate(simpleDateFormat.parse("02/29/1992"));
+		pp.setEmail("jmlp@bakery.com");
+		pp.setPassword("superDeadlyPassword");
 	} // setUp()
 
 	@Test
@@ -66,6 +74,17 @@ public class PersonDAOTest {
 		p = dao.removePerson(p.getIdPerson());
 		assertEquals(tmp, p.getIdPerson());
 	} // testRemovePerson()
+	
+	@Test
+	public void testFindAllPersons() {
+		int tmp = dao.findAllPersons().size();
+		p = dao.addPerson(p);
+		pp = dao.addPerson(pp);
+		List<Person> list = dao.findAllPersons();
+		assertEquals(2, list.size() - tmp);
+		p = dao.removePerson(p.getIdPerson());
+		pp = dao.removePerson(pp.getIdPerson());
+	} // testFindAllPersons()
 	
 
 }

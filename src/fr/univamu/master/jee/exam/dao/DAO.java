@@ -1,6 +1,6 @@
 package fr.univamu.master.jee.exam.dao;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,7 +21,7 @@ public abstract class DAO {
 		}
 	} // close()
 	
-	public abstract Collection<Person> findAllPersons();
+	public abstract List<Person> findAllPersons();
 
 	public abstract Person findPerson(int id);
 

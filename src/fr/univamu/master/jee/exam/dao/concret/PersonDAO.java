@@ -1,17 +1,28 @@
 package fr.univamu.master.jee.exam.dao.concret;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import fr.univamu.master.jee.exam.beans.Person;
 import fr.univamu.master.jee.exam.dao.DAO;
 
 public class PersonDAO extends DAO {
 
-	public Collection<Person> findAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Person> findAllPersons() {
+		EntityManager em = null;
+		try {
+			em = getFactory().createEntityManager();
+			em.getTransaction().begin();
+			TypedQuery<Person> q = em.createQuery("FROM Person", Person.class);
+			return q.getResultList();
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
 	} // findAllPersons()
 
 	public Person findPerson(int id) {
