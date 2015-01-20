@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./directory.css">
+<link rel="stylesheet" type="text/css" href="./CSS/table.css">
 <title>Pixel Pages - Directory</title>
 <%@include file="header.jsp"%>
 </head>
@@ -20,6 +20,7 @@
 			<tr>
 				<td><b>First Name</b></td>
 				<td><b>Last Name</b></td>
+				<td><b>Details</b></td>
 			</tr>
 			
 
@@ -32,6 +33,12 @@
 					<td>
 						<c:out value="${person.getLastName()}" />
 					</td>			
+					<td>
+						<form method="get" action="controller">
+					       <input type="hidden" name="id" value="${person.getIdPerson()}"/>
+					       <input type="submit" value="See details" />
+						</form>					
+					</td>
 				</tr>
 			</c:forEach>
 
