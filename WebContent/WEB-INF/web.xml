@@ -12,6 +12,11 @@
 		<servlet-class>fr.univamu.master.jee.exam.servlet.Controller</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>connection</servlet-name>
+		<servlet-class>fr.univamu.master.jee.exam.servlet.Connection</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
 	<!-- correspondance servlets / URL -->
 
