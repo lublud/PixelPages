@@ -55,10 +55,10 @@ public class Controller extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
 		String err = "";
-
+		boolean changePass = true;
+		boolean changeEmail = true;
 		Person p = null;
 
 		if (null == session.getAttribute("user"))
@@ -67,45 +67,50 @@ public class Controller extends HttpServlet {
 		else
 			p = (Person) session.getAttribute("user");
 
-		if (null != request.getParameter("firstName"))
-			p.setFirstName(request.getParameter("firstName"));
+		if (!"".equals(request.getParameter("email"))) {
+			if (!p.checkEmail(request.getParameter("email"))) {
+				err += "No valid email.";
+				changeEmail = false;
+			}
+		} else
+			changeEmail = false;
 
-		if (null != request.getParameter("lastName"))
-			p.setLastName(request.getParameter("lastName"));
+		if (!"".equals(request.getParameter("oldPasswd"))
+				|| !"".equals(request.getParameter("newPasswd"))
+				|| !"".equals(request.getParameter("newPasswdBis"))) {
 
-		if (null != request.getParameter("birthdate")) {
-
-			try {
-				p.checkBirthDate(request.getParameter("birthdate"));
-					
-				p.setBirthdate(simpleDateFormat.parse(request
-						.getParameter("birthdate")));
-
-			} catch (DateException e) {
-				err = "Error birthdate";
-				session.setAttribute("error", err);
-				request.getRequestDispatcher("edition.jsp").forward(request,
-						response);
-				e.printStackTrace();
-			} catch (ParseException e) {
-				session.setAttribute("error", err);
-				request.getRequestDispatcher("edition.jsp").forward(request,
-						response);
-				e.printStackTrace();
+			if (null == p.canConnect(p.getLogin(),
+					request.getParameter("oldPasswd"))) {
+				err += "Wrong password!";
+				changePass = false;
 			}
 
-		}
-		if (null != request.getParameter("webSite"))
-			p.setWebsite(request.getParameter("webSite"));
+			if (!request.getParameter("newPasswd").equals(
+					request.getParameter("newPasswdBis"))) {
+				err += "New password should be the same for both input.";
+				changePass = false;
+			}
 
-		if (null != request.getParameter("email"))
-			p.setEmail(request.getParameter("email"));
+			if (!p.checkPasswd(request.getParameter("newPasswd"))) {
+				err += "No valid password.";
+				changePass = false;
+			}
+
+		} else
+			changePass = false;
 
 		if (0 != err.length()) {
 			session.setAttribute("error", err);
 			request.getRequestDispatcher("edition.jsp").forward(request,
 					response);
+			return;
 		}
+
+		if (true == changePass)
+			p.setPassword(request.getParameter("newPasswd"));
+		if (true == changeEmail)
+			p.setEmail(request.getParameter("email"));
+		p.setWebsite(request.getParameter("webSite"));
 
 		request.setAttribute("person", p);
 
@@ -118,5 +123,4 @@ public class Controller extends HttpServlet {
 				.forward(request, response);
 
 	}
-
 }

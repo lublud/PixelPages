@@ -18,20 +18,15 @@
 			<form method="post" action="controller">
 				<p>
 					<label for="firstName">First Name:</label>
-					<input type="text" name="firstName" value="<c:out value="${user.getFirstName()}" />"
-								size="16" maxlength="64" />
+					<c:out value="${user.getFirstName()}" />
 					
 					<br />
 					<label for="lastName">Last Name:</label>
-					<input type="text" name="lastName" value="<c:out value="${user.getLastName()}" />"
-								size="16" maxlength="64" />
+					<c:out value="${user.getLastName()}" />
 	
 					<br />
-					<c:set var="now" value="<%=new java.util.Date()%>" />
-					<label for="birthdate">Birth date (format: <fmt:formatDate pattern="dd/MM/yyyy" 
-								value="${now}" />):</label>
-					<input type="text" name="birthdate" value="<fmt:formatDate pattern="dd/MM/yyyy" 
-								value="${user.getBirthdate()}" />" size="16" maxlength="10" />
+					<label for="birthdate">Birth date:</label>
+					<fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthdate()}" />
 					
 					<br />
 					<label for="webSite">Web site:</label>
@@ -42,12 +37,34 @@
 					<label for="email">email:</label>
 					<input type="text" name="email" value="<c:out value="${user.getEmail()}" />"
 								size="16" maxlength="128" />
+								
+					<br />
+					<label for="oldPasswd">Old password:</label>
+					<input type="password" name="oldPasswd" value="" size="16" maxlength="32" />
+								
+					<br />
+					<label for="newPasswd">New password:</label>
+					<input type="password" name="newPasswd" size="16" maxlength="32" />
+								
+					<br />
+					<label for="newPasswdBis">New password (repeat):</label>
+					<input type="password" name="newPasswdBis" value="" size="16" maxlength="32" />
 					
 					<br />
 					<input type="submit" value="OK!" />
 				</p>
 			</form>
 		</fieldset>
+		<p>
+			Rules for passwords:
+			<ul> 
+				<li> It must contains at least one upper case</li> 
+				<li> It must contains at least one lower case</li> 
+				<li> It must contains at least one number</li> 
+				<li> It must contains at least one of the following character: @, #, $, %, !, /</li> 
+				<li> It must be between 8 and 32 characters long</li> 
+			</ul>
+		</p>
 	</div>
 </body>
 </html>

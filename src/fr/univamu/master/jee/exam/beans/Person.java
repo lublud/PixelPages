@@ -6,6 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -137,6 +139,18 @@ public class Person implements Serializable {
 
 		return true;
 	} // checkBirthDate()
+	
+	public boolean checkPasswd (String passwd) {
+		Pattern p = Pattern.compile("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!/]).{8,32})");
+		Matcher m = p.matcher(passwd);
+		return m.matches();
+	} // checkPasswd()
+	
+	public boolean checkEmail (String email) {
+		Pattern p = Pattern.compile("(^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$)");
+		Matcher m = p.matcher(email);
+		return m.matches();
+	} // checkEmail()
 
 	public int getIdPerson() {
 		return idPerson;

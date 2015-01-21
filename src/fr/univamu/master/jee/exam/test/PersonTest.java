@@ -1,5 +1,6 @@
 package fr.univamu.master.jee.exam.test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -70,4 +71,59 @@ public class PersonTest {
 	public void testWrongFormatBirthDate() throws DateException {
 		p.checkBirthDate("29-02-2013");
 	} // testWrongFormatBirthDate()
+	
+	@Test
+	public void testPasswd() {
+		assertTrue(p.checkPasswd("superDeadlyPassw0rd!"));
+	} //testPasswd()
+	
+	@Test
+	public void testShortPasswd() {
+		assertFalse(p.checkPasswd("P4$$wd"));
+	} // testShortPasswd()
+	
+	@Test
+	public void testLongPasswd() {
+		assertFalse(p.checkPasswd("ThisPasswordIsWayTooLongToBeAccepted!AndAlso0+0!=1"));
+	} // testLongPasswd()
+	
+	@Test
+	public void testLowerCaseMissingPasswd() {
+		assertFalse(p.checkPasswd("IMSCREAMMMM1NNNG!"));
+	} // testLowerCaseMissingPasswd()
+	
+	@Test
+	public void testUpperCaseMissingPasswd() {
+		assertFalse(p.checkPasswd("imn0tscreaming##"));
+	} // testUpperCaseMissingPasswd()
+	
+	@Test
+	public void testNumberMissingPasswd() {
+		assertFalse(p.checkPasswd("Password!"));
+	} // testNumberMissingPasswd()
+	
+	@Test
+	public void testSpecCharMissingPasswd() {
+		assertFalse(p.checkPasswd("Passw0rd"));
+	} // testSpecCharMissingPasswd()
+	
+	@Test
+	public void testEmail() {
+		assertTrue(p.checkEmail("jmlp@bakery.com"));
+	} // testEmail()
+	
+	@Test
+	public void testWrongFirstPartEmail() {
+		assertFalse(p.checkEmail("=)@bakery.com"));
+	} // testWrongFirstPartEmail()
+	
+	@Test
+	public void testWrongSecondPartEmail() {
+		assertFalse(p.checkEmail("jmlp@(=.com"));
+	} // testWrongSecondPartEmail()
+	
+	@Test
+	public void testWrongThirdPartEmail() {
+		assertFalse(p.checkEmail("jmlp@bakery.a"));
+	} // testWrongThirdPartEmail()
 }
