@@ -30,6 +30,8 @@ public abstract class DAO {
 	public abstract Person addPerson(Person p);
 	
 	public abstract Person removePerson(int id);
+	
+	public abstract Person existsPerson(String login, String passwd);
 
 	public EntityManagerFactory getFactory() {
 		return factory;

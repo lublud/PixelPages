@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import fr.univamu.master.jee.exam.dao.DAO;
+import fr.univamu.master.jee.exam.dao.concret.PersonDAO;
+
 @Entity(name = "Person")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +22,10 @@ public class Person implements Serializable {
 	@Id()
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idPerson;
+	
+	@Basic(optional = false)
+	@Column(name = "login", length = 16, nullable = false, unique = true)
+	private String login;
 
 	@Basic(optional = false)
 	@Column(name = "firstName", length = 64, nullable = false)
@@ -48,6 +55,14 @@ public class Person implements Serializable {
 	public Person() {
 		super();
 	} // Person()
+	
+	public Person canConnect(String login, String passwd) {
+		DAO dao = new PersonDAO();
+		dao.init();
+		Person p = dao.existsPerson(login, passwd);
+		dao.close();
+		return p;
+	} // canConnect()
 
 	public int getIdPerson() {
 		return idPerson;
@@ -56,6 +71,14 @@ public class Person implements Serializable {
 	public void setIdPerson(int idPerson) {
 		this.idPerson = idPerson;
 	} // setIdPerson()
+
+	public String getLogin() {
+		return login;
+	} // getLogin()
+
+	public void setLogin(String login) {
+		this.login = login;
+	} // setLogin()
 
 	public String getFirstName() {
 		return firstName;
@@ -96,6 +119,10 @@ public class Person implements Serializable {
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	} // setBirthdate()
+	
+	public String getPassword() {
+		return password;
+	} // getBirthdate()
 
 	public void setPassword(String password) {
 		this.password = password;

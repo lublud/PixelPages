@@ -3,6 +3,8 @@ package fr.univamu.master.jee.exam.dao.concret;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import fr.univamu.master.jee.exam.beans.Person;
@@ -99,4 +101,31 @@ public class PersonDAO extends DAO {
 		}
 	} // removePerson()
 
+	@Override
+	public Person existsPerson(String login, String passwd) {
+		EntityManager em = null;
+		Person p = null;
+		try {
+			em = getFactory().createEntityManager();
+			em.getTransaction().begin();
+			Query q = em
+					.createQuery("SELECT p FROM Person p WHERE login = ? and password = ?");
+
+			q.setParameter(1, login);
+			q.setParameter(2, passwd);
+
+			p = (Person) q.getSingleResult();
+
+			em.getTransaction().commit();
+			System.err.println("findPerson: " + p.getIdPerson() + " - "
+					+ p.getFirstName());
+			return p;
+		} catch (NoResultException e) {
+			return null;
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+	} // existsPerson()
 }

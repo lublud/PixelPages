@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./CSS/table.css">
+<link rel="stylesheet" type="text/css" href="./CSS/style.css">
 <title>Pixel Pages - Details person</title>
 <%@include file="header.jsp"%>
 </head>
 <body>
-	<center>
+	<div id="content">
 		<table>
 			<tr>
 				<td><b>First name</b></td>
@@ -25,6 +25,6 @@
 				<td><c:out value="${person.getWebsite()}" /></td>
 			</tr>
 		</table>
-	</center>
+	</div>
 </body>
 </html>

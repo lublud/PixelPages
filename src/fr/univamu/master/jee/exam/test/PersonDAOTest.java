@@ -1,6 +1,7 @@
 package fr.univamu.master.jee.exam.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +36,7 @@ public class PersonDAOTest {
 	public void setUp() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		p = new Person();
+		p.setLogin("lepain");
 		p.setFirstName("Jean-Marie");
 		p.setLastName("Le Pain");
 		p.setBirthdate(simpleDateFormat.parse("02/29/1992"));
@@ -42,18 +44,20 @@ public class PersonDAOTest {
 		p.setPassword("superDeadlyPassword");
 		
 		pp = new Person();
+		pp.setLogin("jean");
 		pp.setFirstName("Jean");
 		pp.setLastName("Jean");
 		pp.setBirthdate(simpleDateFormat.parse("02/29/1992"));
-		pp.setEmail("jmlp@bakery.com");
+		pp.setEmail("jeanjean@bakery.com");
 		pp.setPassword("superDeadlyPassword");
 	} // setUp()
 
 	@Test
 	public void testAddFindPerson() {
 		p = dao.addPerson(p);
-		assertEquals(p.getIdPerson(), dao.findPerson(p.getIdPerson()).getIdPerson());
+		int tmp = dao.findPerson(p.getIdPerson()).getIdPerson();
 		dao.removePerson(p.getIdPerson());
+		assertEquals(p.getIdPerson(), tmp);
 	} // testAddFindPerson()
 	
 	@Test
@@ -62,8 +66,9 @@ public class PersonDAOTest {
 		p = dao.addPerson(p);
 		p.setWebsite(website);
 		p = dao.updatePerson(p);
-		assertEquals(website, dao.findPerson(p.getIdPerson()).getWebsite());
+		String tmp = dao.findPerson(p.getIdPerson()).getWebsite();
 		dao.removePerson(p.getIdPerson());
+		assertEquals(website, tmp);
 	} // testUpdatePerson()
 	
 	@Test
@@ -81,10 +86,31 @@ public class PersonDAOTest {
 		p = dao.addPerson(p);
 		pp = dao.addPerson(pp);
 		List<Person> list = dao.findAllPersons();
-		assertEquals(2, list.size() - tmp);
 		p = dao.removePerson(p.getIdPerson());
 		pp = dao.removePerson(pp.getIdPerson());
+		assertEquals(2, list.size() - tmp);
 	} // testFindAllPersons()
+	
+	@Test
+	public void testExistsPerson() {
+		int tmp = -1;
+		p = dao.addPerson(p);
+		tmp = p.getIdPerson();
+		p = dao.existsPerson(p.getLogin(), p.getPassword());
+		int tmpp = p.getIdPerson();
+		p = dao.removePerson(p.getIdPerson());
+		assertEquals(tmp, tmpp);
+	} // testExistsPerson()
+
+	@Test
+	public void testDoesNotExistPerson() {
+		int tmp = -1;
+		p = dao.addPerson(p);
+		tmp = p.getIdPerson();
+		p = dao.existsPerson(p.getLogin(), "PasBon!");
+		dao.removePerson(tmp);
+		assertNull(p);
+	} // testDoesNotExistPerson()
 	
 
 }

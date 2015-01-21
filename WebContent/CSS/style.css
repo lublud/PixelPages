@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+table
+{
+    border-collapse: collapse;
+}
+td
+{
+    border: 1px solid black;
+}
+
+div#header {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    border-bottom: 2px solid #000;
+    padding: 51px 0px;
+}
+
+div#content {
+	left:50%;
+	top: 121px;
+	position:absolute;
+}
+
+#top_left
+{
+	left:7px;
+	top:7px;
+	position:absolute;
+}
+#top_center
+{
+	left:50%;
+	top:7px;
+	position:absolute;
+}
+#top_right
+{
+	top: 7px;
+	right: 7px;
+	position:absolute;
+}
