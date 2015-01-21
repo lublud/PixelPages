@@ -11,7 +11,6 @@ CONTENT="2; URL=./directory.jsp">
 </head>
 <body>
 	<div id="content">
-		<!-- if there is an error, print it and then remove it -->
 		<c:remove var="user" scope="session" />
 		<c:out value="Please, while while being disconnected..." />
 	</div>

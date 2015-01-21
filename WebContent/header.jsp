@@ -26,8 +26,6 @@
 				</c:when>
 			</c:choose>
 		</span>
-		<!-- if connected: person's name, else: connection -->
-
 	</div>
 </body>
 </html>

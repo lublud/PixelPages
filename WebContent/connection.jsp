@@ -8,7 +8,6 @@
 <%@include file="header.jsp"%>
 </head>
 <body>
-<!-- if ${user} already exists, then go to directory.jsp -->
 	<div id="content">
 		<form method="post" action="connection">
 			<fieldset>
@@ -22,7 +21,7 @@
 				</p>
 				<p>
 					<label for="password">Password</label><input class="mandatory"
-						type="password" name="password" size="16" maxlength="64" />
+						type="password" name="password" size="16" maxlength="32" />
 				</p>
 				<p>
 					<input class="button" type="submit" name="OK" value="ok" />
