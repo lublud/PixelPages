@@ -12,7 +12,6 @@
 		<form method="post" action="connection">
 			<fieldset>
 				<legend>Connection</legend>
-				<!-- if there is an error, print it and then remove it -->
 				<c:out value="${error}" />
 				<c:remove var="error" scope="session" />
 				<p>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -17,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import fr.univamu.master.jee.exam.dao.DAO;
 import fr.univamu.master.jee.exam.dao.concret.PersonDAO;
+import fr.univamu.master.jee.exam.exception.DateException;
 
 @Entity(name = "Person")
 public class Person implements Serializable {
@@ -35,7 +37,7 @@ public class Person implements Serializable {
 	private String firstName;
 
 	@Basic(optional = false)
-	@Column(name = "lastName", length = 26400, nullable = false)
+	@Column(name = "lastName", length = 64, nullable = false)
 	private String lastName;
 
 	@Basic(optional = true)
@@ -81,7 +83,8 @@ public class Person implements Serializable {
 		return new String(array);
 	} // byteToHex()
 
-	private static String SHA256(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	private static String SHA256(String text) throws NoSuchAlgorithmException,
+			UnsupportedEncodingException {
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		byte[] hash = digest.digest(text.getBytes("UTF-8"));
 		String res = "";
@@ -89,6 +92,51 @@ public class Person implements Serializable {
 			res += byteToHex(hash[i]);
 		return res;
 	} // SHA256()
+
+	private static boolean isLeapYear(int year) {
+		if (year % 4 == 0 && year % 100 != 0)
+			return true;
+		else if (year % 400 == 0)
+			return true;
+		return false;
+
+	} // isLeapYear()
+
+	public boolean checkBirthDate(String date) throws DateException {
+		if (10 < date.length())
+			throw new DateException("Error date: format is not correct.");
+
+		String[] parts = date.split("/");
+		if (3 != parts.length)
+			throw new DateException("Error date: format is not correct.");
+
+		int day = Integer.parseInt(parts[0]);
+		int month = Integer.parseInt(parts[1]);
+		int year = Integer.parseInt(parts[2]);
+
+		if (year > Integer.parseInt(new SimpleDateFormat("yyyy")
+				.format(new Date())))
+			throw new DateException(
+					"Error date: you were not born in the future.");
+
+		if (month > 12 || month < 1)
+			throw new DateException("Error date: unknown month.");
+
+		if (day < 1)
+			throw new DateException("Error date: unknown day.");
+
+		if (day > 31 && (1 == month || 3 == month || 5 == month || 7 == month
+				|| 8 == month || 10 == month || 12 == month))
+			throw new DateException("Error date: unknown day.");
+		if (day > 30 && (4 == month || 6 == month || 9 == month || 11 == month))
+			throw new DateException("Error date: unknown day.");
+		if (day > 29 && (2 == month && isLeapYear(year)))
+			throw new DateException("Error date: unknown day.");
+		if (day > 28 && 2 == month)
+			throw new DateException("Error date: unknown day.");
+
+		return true;
+	} // checkBirthDate()
 
 	public int getIdPerson() {
 		return idPerson;
