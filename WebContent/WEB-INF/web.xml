@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-
-
-	<!-- déclarations des servlets -->
-	<servlet>
-		<servlet-name>controller</servlet-name>
-		<servlet-class>fr.univamu.master.jee.exam.servlet.Controller</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>connection</servlet-name>
-		<servlet-class>fr.univamu.master.jee.exam.servlet.Connection</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<!-- correspondance servlets / URL -->
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <servlet>
+    <servlet-name>controller</servlet-name>
+    <servlet-class>fr.univamu.master.jee.exam.servlet.Controller</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>connection</servlet-name>
+    <servlet-class>fr.univamu.master.jee.exam.servlet.Connection</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+  <filter>
+    <filter-name>SessionCheckFilter</filter-name>
+    <filter-class>fr.univamu.master.jee.exam.filter.SessionCheck</filter-class>
+  </filter>
+  <filter>
+    <filter-name>LoggedInCheckFilter</filter-name>
+    <filter-class>fr.univamu.master.jee.exam.filter.LoggedInCheck</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>SessionCheckFilter</filter-name>
+    <url-pattern>/edition.jsp</url-pattern>
+    <url-pattern>/disconnection.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoggedInCheckFilter</filter-name>
+    <url-pattern>/connection.jsp</url-pattern>
+  </filter-mapping>
 </web-app>
