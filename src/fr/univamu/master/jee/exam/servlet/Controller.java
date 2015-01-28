@@ -76,8 +76,8 @@ public class Controller extends HttpServlet {
 			changeEmail = false;
 
 		if (!"".equals(request.getParameter("oldPasswd"))
-				|| !"".equals(request.getParameter("newPasswd"))
-				|| !"".equals(request.getParameter("newPasswdBis"))) {
+				&& !"".equals(request.getParameter("newPasswd"))
+				&& !"".equals(request.getParameter("newPasswdBis"))) {
 
 			if (null == p.canConnect(p.getLogin(),
 					request.getParameter("oldPasswd"))) {

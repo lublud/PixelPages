@@ -12,7 +12,7 @@ CONTENT="2; URL=./directory.jsp">
 <body>
 	<div id="content">
 		<c:remove var="user" scope="session" />
-		<c:out value="Please, while while being disconnected..." />
+		<c:out value="Please, wait while being disconnected..." />
 	</div>
 </body>
 </html>
