@@ -147,7 +147,7 @@ public class Person implements Serializable {
 	} // checkPasswd()
 	
 	public boolean checkEmail (String email) {
-		Pattern p = Pattern.compile("(^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$)");
+		Pattern p = Pattern.compile("(^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-zA-Z]{2,4}$)");
 		Matcher m = p.matcher(email);
 		return m.matches();
 	} // checkEmail()
