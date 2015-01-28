@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta HTTP-EQUIV="Refresh"
-CONTENT="2; URL=./directory.jsp"> 
+CONTENT="2; URL=./directory.htm"> 
 <title>Pixel Pages - disconnection</title>
 </head>
 <body>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="./CSS/style.css">
 </head>
 <body>
-	<c:url var="home" value="./directory.jsp" />
+	<c:url var="home" value="./directory.htm" />
 	<div id="header">
 		<img id="top_left" src="./images/logoamu.png"
 			alt="Aix-Marseille Université"
@@ -17,12 +17,12 @@
 		<span id="top_right">
 			<c:choose>
 				<c:when test="${user == null}">
-					<a href="./connection.jsp">connection</a>
+					<a href="./connection.htm">connection</a>
 				</c:when>
 				<c:when test="${user != null}">
 					<c:out value="Welcome ${user.getLastName()}!" />
-					<a href="./edition.jsp">profile</a>
-					<a href="./disconnection.jsp">disconnect</a>
+					<a href="./edition.htm">profile</a>
+					<a href="./disconnection.htm">disconnect</a>
 				</c:when>
 			</c:choose>
 		</span>

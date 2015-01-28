@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
 		dao.close();
 
 		request.setAttribute("person", p);
-		request.getRequestDispatcher("details.jsp").forward(request, response);
+		request.getRequestDispatcher("details.htm").forward(request, response);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Controller extends HttpServlet {
 		Person p = null;
 
 		if (null == session.getAttribute("user"))
-			request.getRequestDispatcher("directory.jsp").forward(request,
+			request.getRequestDispatcher("directory.htm").forward(request,
 					response);
 		else
 			p = (Person) session.getAttribute("user");
@@ -101,7 +101,7 @@ public class Controller extends HttpServlet {
 
 		if (0 != err.length()) {
 			session.setAttribute("error", err);
-			request.getRequestDispatcher("edition.jsp").forward(request,
+			request.getRequestDispatcher("edition.htm").forward(request,
 					response);
 			return;
 		}
@@ -119,7 +119,7 @@ public class Controller extends HttpServlet {
 		p = dao.updatePerson(p);
 		dao.close();
 
-		request.getRequestDispatcher("directory.jsp")
+		request.getRequestDispatcher("directory.htm")
 				.forward(request, response);
 
 	}

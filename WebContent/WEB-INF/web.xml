@@ -1,34 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <servlet>
-    <servlet-name>controller</servlet-name>
-    <servlet-class>fr.univamu.master.jee.exam.servlet.Controller</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>connection</servlet-name>
-    <servlet-class>fr.univamu.master.jee.exam.servlet.Connection</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  
-  <filter>
-    <filter-name>SessionCheckFilter</filter-name>
-    <filter-class>fr.univamu.master.jee.exam.filter.SessionCheck</filter-class>
-  </filter>
-  <filter>
-    <filter-name>LoggedInCheckFilter</filter-name>
-    <filter-class>fr.univamu.master.jee.exam.filter.LoggedInCheck</filter-class>
-  </filter>
-  
-  <filter-mapping>
-    <filter-name>SessionCheckFilter</filter-name>
-    <url-pattern>/edition.jsp</url-pattern>
-    <url-pattern>/disconnection.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>LoggedInCheckFilter</filter-name>
-    <url-pattern>/connection.jsp</url-pattern>
-  </filter-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<servlet>
+		<servlet-name>controller</servlet-name>
+		<servlet-class>fr.univamu.master.jee.exam.servlet.Controller</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>connection</servlet-name>
+		<servlet-class>fr.univamu.master.jee.exam.servlet.Connection</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>directory</servlet-name>
+		<jsp-file>/directory.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>directory</servlet-name>
+		<url-pattern>/directory.htm</url-pattern>
+		<url-pattern>/directory.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>connect</servlet-name>
+		<jsp-file>/connection.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>connect</servlet-name>
+		<url-pattern>/connection.htm</url-pattern>
+		<url-pattern>/connection.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>disconnect</servlet-name>
+		<jsp-file>/disconnection.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>disconnect</servlet-name>
+		<url-pattern>/disconnection.htm</url-pattern>
+		<url-pattern>/disconnection.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edition</servlet-name>
+		<jsp-file>/edition.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edition</servlet-name>
+		<url-pattern>/edition.htm</url-pattern>
+		<url-pattern>/edition.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>details</servlet-name>
+		<jsp-file>/details.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>details</servlet-name>
+		<url-pattern>/details.htm</url-pattern>
+		<url-pattern>/details.html</url-pattern>
+	</servlet-mapping>
+
+
+	<filter>
+		<filter-name>SessionCheckFilter</filter-name>
+		<filter-class>fr.univamu.master.jee.exam.filter.SessionCheck</filter-class>
+	</filter>
+	<filter>
+		<filter-name>LoggedInCheckFilter</filter-name>
+		<filter-class>fr.univamu.master.jee.exam.filter.LoggedInCheck</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionCheckFilter</filter-name>
+		<url-pattern>/edition.jsp</url-pattern>
+		<url-pattern>/disconnection.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LoggedInCheckFilter</filter-name>
+		<url-pattern>/connection.jsp</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>directory.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

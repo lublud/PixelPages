@@ -40,16 +40,16 @@ public class Connection extends HttpServlet {
 		HttpSession session = request.getSession(true);
 
 		if (null != session.getAttribute("user"))
-			request.getRequestDispatcher("directory.jsp").forward(request, response);
+			request.getRequestDispatcher("directory.htm").forward(request, response);
 
 		Person p = new Person();
 		p = p.canConnect(request.getParameter("login"), request.getParameter("password"));
 		if (null == p) {
 			session.setAttribute("error", "Wrong login and/or password.");
-			request.getRequestDispatcher("connection.jsp").forward(request, response);
+			request.getRequestDispatcher("connection.htm").forward(request, response);
 		} else {
 			session.setAttribute("user", p);
-			request.getRequestDispatcher("directory.jsp").forward(request, response);
+			request.getRequestDispatcher("directory.htm").forward(request, response);
 		}
 		
 	}

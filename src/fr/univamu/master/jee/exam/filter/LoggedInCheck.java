@@ -45,7 +45,7 @@ public class LoggedInCheck implements Filter {
 		HttpSession session = request.getSession(true);
 
 		if (null != session.getAttribute("user")) {
-			response.sendRedirect("directory.jsp");
+			response.sendRedirect("directory.htm");
 			return;
 		}
         arg2.doFilter(request, response);

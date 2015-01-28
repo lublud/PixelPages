@@ -49,7 +49,7 @@ public class SessionCheck implements Filter {
 		HttpSession session = request.getSession(true);
 
 		if (null == session.getAttribute("user")) {
-			response.sendRedirect("connection.jsp");
+			response.sendRedirect("connection.htm");
 			return;
 		}
         arg2.doFilter(request, response);
