@@ -1,8 +1,6 @@
 package fr.univamu.master.jee.exam.servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +12,11 @@ import javax.servlet.http.HttpSession;
 import fr.univamu.master.jee.exam.beans.Person;
 import fr.univamu.master.jee.exam.dao.DAO;
 import fr.univamu.master.jee.exam.dao.concret.PersonDAO;
-import fr.univamu.master.jee.exam.exception.DateException;
 
 /**
- * Servlet implementation class Controler
+ * Servlet implementation class Controller
+ * 
+ * @author Tom Chassagne &amp;&amp; Ludovic Lubeigt
  */
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
@@ -48,6 +47,9 @@ public class Controller extends HttpServlet {
 	}
 
 	/**
+	 * Check the form to change personal details.
+	 * 
+	 * @see Person
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */

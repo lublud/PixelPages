@@ -6,19 +6,43 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import fr.univamu.master.jee.exam.beans.Person;
 import fr.univamu.master.jee.exam.dao.DAO;
 
+/**
+ * <b>PersonDAO</b>
+ * <p>
+ * Implementation of the methods to communicate with the database.
+ * </p>
+ * 
+ * @author Tom Chassagne &amp;&amp; Ludovic Lubeigt
+ */
 public class PersonDAO extends DAO {
 
+
+    /**
+     * Find all person in the database.
+     * 
+     * @see Person
+     * 
+     * @return List of person from the database
+     */
 	public List<Person> findAllPersons() {
 		EntityManager em = null;
 		try {
 			em = getFactory().createEntityManager();
 			em.getTransaction().begin();
-			TypedQuery<Person> q = em.createQuery("FROM Person", Person.class);
-			return q.getResultList();
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+			CriteriaQuery<Person> q = cb.createQuery(Person.class);
+			Root<Person> c = q.from(Person.class);
+			q.select(c);
+			q.orderBy(cb.asc(c.get("lastName")));
+			TypedQuery<Person> res = em.createQuery(q);
+			return res.getResultList();
 		} finally {
 			if (em != null) {
 				em.close();
@@ -27,6 +51,16 @@ public class PersonDAO extends DAO {
 
 	} // findAllPersons()
 
+    /**
+     * Find a specific person in the database.
+     * 
+     * @param id
+     *            id of the person to be searched
+     * 
+     * @see Person
+     * 
+     * @return The person if exists, null otherwise. 
+     */
 	public Person findPerson(int id) {
 		EntityManager em = null;
 		Person p = null;
@@ -46,6 +80,16 @@ public class PersonDAO extends DAO {
 
 	} // findPerson()
 
+    /**
+     * Update a specific person in the database.
+     * 
+     * @param p
+     *            The person to be updated
+     * 
+     * @see Person
+     * 
+     * @return The updated person 
+     */
 	public Person updatePerson(Person p) {
 		EntityManager em = null;
 		try {
@@ -63,6 +107,16 @@ public class PersonDAO extends DAO {
 
 	} // updatePerson()
 
+    /**
+     * Add a specific person in the database.
+     * 
+     * @param p
+     *            The person to be added
+     * 
+     * @see Person
+     * 
+     * @return The added person 
+     */
 	@Override
 	public Person addPerson(Person p) {
 		EntityManager em = null;
@@ -81,6 +135,16 @@ public class PersonDAO extends DAO {
 
 	} // addPerson()
 
+    /**
+     * Remove a specific person in the database.
+     * 
+     * @param id
+     *            id of the person to be searched
+     * 
+     * @see Person
+     * 
+     * @return The removed person 
+     */
 	@Override
 	public Person removePerson(int id) {
 		EntityManager em = null;
@@ -101,6 +165,18 @@ public class PersonDAO extends DAO {
 		}
 	} // removePerson()
 
+    /**
+     * Check a person exists in the database.
+     * 
+     * @param login
+     *            login of the person.
+     * @param passwd
+     *            password of the person.
+     * 
+     * @see Person
+     * 
+     * @return The person if exists, null otherwise. 
+     */
 	@Override
 	public Person existsPerson(String login, String passwd) {
 		EntityManager em = null;

@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pixel Pages - Connection</title>
-<%@include file="header.jsp"%>
 </head>
 <body>
+	<%@include file="header.jsp"%>
 	<div id="content">
 		<form method="post" action="connection">
 			<fieldset>

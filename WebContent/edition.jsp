@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./CSS/style.css">
 <title>Pixel Pages - Edition</title>
-<%@include file="header.jsp"%>
 </head>
 <body>
+	<%@include file="header.jsp"%>
 	<div id="content">
 		<fieldset>
 			<legend>Edition</legend>
@@ -55,7 +55,7 @@
 				</p>
 			</form>
 		</fieldset>
-		<p>
+		<p>			
 			Rules for passwords:
 			<ul> 
 				<li> It must contains at least one upper case</li> 
@@ -64,7 +64,6 @@
 				<li> It must contains at least one of the following character: @, #, $, %, !, /</li> 
 				<li> It must be between 8 and 32 characters long</li> 
 			</ul>
-		</p>
 	</div>
 </body>
 </html>

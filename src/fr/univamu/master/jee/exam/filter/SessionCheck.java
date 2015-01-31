@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet Filter implementation class SessionCheck
+ * 
+ * @author Tom Chassagne &amp;&amp; Ludovic Lubeigt
  */
 @WebFilter("/SessionCheck")
 public class SessionCheck implements Filter {
@@ -40,12 +42,16 @@ public class SessionCheck implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Filter when no one is logged in
+	 * 
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
-		String url = request.getRequestURL().toString();
 		HttpSession session = request.getSession(true);
 
 		if (null == session.getAttribute("user")) {

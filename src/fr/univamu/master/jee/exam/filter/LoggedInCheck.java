@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet Filter implementation class LoggedInCheck
+ * 
+ * @author Tom Chassagne &amp;&amp; Ludovic Lubeigt
  */
 @WebFilter("/LoggedInCheck")
 public class LoggedInCheck implements Filter {
@@ -34,6 +36,8 @@ public class LoggedInCheck implements Filter {
 	}
 
 	/**
+	 * Filter when someone is logged in
+	 * 
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	@Override
@@ -41,7 +45,6 @@ public class LoggedInCheck implements Filter {
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
-		String url = request.getRequestURL().toString();
 		HttpSession session = request.getSession(true);
 
 		if (null != session.getAttribute("user")) {

@@ -8,9 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./CSS/style.css">
 <title>Pixel Pages - Details person</title>
-<%@include file="header.jsp"%>
 </head>
 <body>
+	<%@include file="header.jsp"%>
 	<div id="content">
 		<table>
 			<tr>

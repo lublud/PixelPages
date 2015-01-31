@@ -13,6 +13,8 @@ import fr.univamu.master.jee.exam.beans.Person;
 
 /**
  * Servlet implementation class Connection
+ * 
+ * @author Tom Chassagne &amp;&amp; Ludovic Lubeigt
  */
 @WebServlet("/connection")
 public class Connection extends HttpServlet {
@@ -34,6 +36,9 @@ public class Connection extends HttpServlet {
 	}
 
 	/**
+	 * Check user information before the connection.
+	 * 
+	 * @see Person#canConnect(String, String)
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
