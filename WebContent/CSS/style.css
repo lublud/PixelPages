@@ -31,15 +31,35 @@ body
 }
 #top_left
 {
-	left:7px;
-	top:7px;
+	left:15px;
+	top:15px;
 	position:absolute;
 }
 #top_right
 {
-	top: 7px;
-	right: 7px;
+	top: 30px;
+	right: 40px;
 	position:absolute;
+}
+#connect
+{
+	margin-top: 10px;
+	padding: 10px 0px 10px 0px;
+	background-color: grey;
+	border: 1px solid black;
+	border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-khtml-border-radius: 10px;
+}
+#connect a
+{
+	padding: 10px 25px 10px 25px;
+	margin: none;
+	color: black;
+    text-decoration: none;
+    
+    font-family: Tahoma;
 }
 
 #top_center a
@@ -72,8 +92,22 @@ div#content > *
 
 #edit
 {
-	width: 350px;
-	margin: auto;
+	width: 330px;
+}
+
+#rules
+{
+	text-align: default;
+}
+
+fieldset
+{
+	background-color: #F4F4F4;
+}
+
+ul
+{
+	text-align: left;
 }
 
 form
@@ -87,4 +121,15 @@ table
 td
 {
     border: 1px solid black;
+    padding: 7px;
+}
+tr
+{
+	background-color: #F4F4F4;
+}
+
+#form td
+{
+    border: none;
+    text-align: left;
 }

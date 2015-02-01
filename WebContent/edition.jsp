@@ -11,53 +11,54 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div id="content">
-		<fieldset id="edit">
-			<legend>Edition</legend>
-			<c:out value="${error}" />
-			<c:remove var="error" scope="session" />
-			<form method="post" action="controller">
-				<p>
-					<label for="firstName">First Name:</label>
-					<c:out value="${user.getFirstName()}" />
-					
-					<br />
-					<label for="lastName">Last Name:</label>
-					<c:out value="${user.getLastName()}" />
-	
-					<br />
-					<label for="birthdate">Birth date:</label>
-					<fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthdate()}" />
-					
-					<br />
-					<label for="webSite">Web site:</label>
-					<input type="text" name="webSite" value="<c:out value="${user.getWebsite()}" />"
-								size="16" maxlength="128" />
-					
-					<br />
-					<label for="email">email:</label>
-					<input type="text" name="email" value="<c:out value="${user.getEmail()}" />"
-								size="16" maxlength="128" />
-								
-					<br />
-					<label for="oldPasswd">Old password:</label>
-					<input type="password" name="oldPasswd" value="" size="16" maxlength="32" />
-								
-					<br />
-					<label for="newPasswd">New password:</label>
-					<input type="password" name="newPasswd" size="16" maxlength="32" />
-								
-					<br />
-					<label for="newPasswdBis">New password (repeat):</label>
-					<input type="password" name="newPasswdBis" value="" size="16" maxlength="32" />
-					
-					<br />
-					<input type="submit" value="OK!" />
-				</p>
-			</form>
-		</fieldset>
+		<form method="post" action="controller">
+			<fieldset id="edit">
+				<legend>Edition</legend>
+				<c:out value="${error}" />
+				<c:remove var="error" scope="session" />
+				<table id="form">
+					<tr>
+						<td>First Name</td>
+						<td><c:out value="${user.getFirstName()}" /></td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td><c:out value="${user.getLastName()}" /></td>
+					</tr>
+					<tr>
+						<td>Birth date</td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthdate()}" /></td>
+					</tr>
+					<tr>
+						<td>Web site</td>
+						<td><input type="text" name="webSite" value="<c:out value="${user.getWebsite()}" />"
+								size="16" maxlength="128" /></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="email" value="<c:out value="${user.getEmail()}" />"
+								size="16" maxlength="128" /></td>
+					</tr>
+					<tr>
+						<td>Old password</td>
+						<td><input type="password" name="oldPasswd" value="" size="16" maxlength="32" /></td>
+					</tr>
+					<tr>
+						<td>New password</td>
+						<td><input type="password" name="newPasswd" size="16" maxlength="32" /></td>
+					</tr>
+					<tr>
+						<td>Repeat new password</td>
+						<td><input type="password" name="newPasswdBis" value="" size="16" maxlength="32" /></td>
+					</tr>
+				</table>
+				<br><input type="submit" value="Modify" />
+			</fieldset>
+		</form>
+		<br>
 		<div id="element">
-			<p id="element">Rules for passwords:</p>
-			<ul> 
+			<p id="rules"><b>Rules for passwords:</b></p>
+			<ul>
 				<li> It must contains at least one upper case</li> 
 				<li> It must contains at least one lower case</li> 
 				<li> It must contains at least one number</li> 

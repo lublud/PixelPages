@@ -16,12 +16,12 @@
 		<span id="top_right">
 			<c:choose>
 				<c:when test="${user == null}">
-					<a href="./connection.htm">connection</a>
+					<div id="connect"><a href="./connection.htm">Connection</a></div>
 				</c:when>
 				<c:when test="${user != null}">
-					<c:out value="Welcome ${user.getLastName()}!" />
-					<a href="./edition.htm">profile</a>
-					<a href="./disconnection.htm">disconnect</a>
+					<c:out value="Welcome ${user.getLastName()} !" />
+					<br><a href="./edition.htm">Profile</a>
+					<br><a href="./disconnection.htm">Disconnect</a>
 				</c:when>
 			</c:choose>
 		</span>

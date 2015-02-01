@@ -15,17 +15,17 @@
 				<legend>Connection</legend>
 				<c:out value="${error}" />
 				<c:remove var="error" scope="session" />
-				<p>
-					<label for="login">Login  </label><input type="text" name="login"
-						value="" size="16" maxlength="16" />
-				</p>
-				<p>
-					<label for="password">Password  </label><input class="mandatory"
-						type="password" name="password" size="16" maxlength="32" />
-				</p>
-				<p>
-					<input class="button" type="submit" name="OK" value="ok" />
-				</p>
+				<table id="form">
+					<tr>
+						<td>Login</td>
+						<td><input type="text" name="login" value="" size="16" maxlength="16" /></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input class="mandatory" type="password" name="password" size="16" maxlength="32" /></td>
+					</tr>
+				</table>
+				<br><input class="button" type="submit" name="OK" value="Connect" />
 			</fieldset>
 		</form>
 	</div>

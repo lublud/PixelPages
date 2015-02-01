@@ -27,7 +27,7 @@
 			</tr>
 			<c:if test="${user != null}">
 				<tr>
-					<td><b>email</b></td>
+					<td><b>Email</b></td>
 					<td><c:out value="${person.getEmail()}" /></td>
 				</tr>
 				<tr>
