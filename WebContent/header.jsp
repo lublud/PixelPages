@@ -4,7 +4,7 @@
 		<img id="top_left" src="./images/logoamu.png"
 			alt="Aix-Marseille Université"
 			style="height: auto; width: auto; max-width: 250px;" />
-		<a id="top_center" href="${home}"><h2>Pixel Pages</h2> </a>
+		<h2><a id="top_center" href="${home}">Pixel Pages</a></h2>
 		<span id="top_right">
 			<c:choose>
 				<c:when test="${user == null}">
