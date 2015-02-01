@@ -4,7 +4,15 @@
 		<img id="top_left" src="./images/logoamu.png"
 			alt="Aix-Marseille Université"
 			style="height: auto; width: auto; max-width: 250px;" />
-		<h2><a id="top_center" href="${home}">Pixel Pages</a></h2>
+		<div id="top_center"><a id="top_center" href="${home}">
+		<pre id="top_center"> ______ _            _ ______                       
+(_____ (_)          | (_____ \                      
+ _____) ) _   _ ____| |_____) )___  ____  ____  ___ 
+|  ____/ ( \ / ) _  ) |  ____/ _  |/ _  |/ _  )/___)
+| |    | |) X ( (/ /| | |   ( ( | ( ( | ( (/ /|___ |
+|_|    |_(_/ \_)____)_|_|    \_||_|\_|| |\____|___/ 
+                                  (_____|           </pre>
+		</a></div>
 		<span id="top_right">
 			<c:choose>
 				<c:when test="${user == null}">

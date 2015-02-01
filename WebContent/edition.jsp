@@ -11,7 +11,7 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div id="content">
-		<fieldset>
+		<fieldset id="edit">
 			<legend>Edition</legend>
 			<c:out value="${error}" />
 			<c:remove var="error" scope="session" />
@@ -55,8 +55,8 @@
 				</p>
 			</form>
 		</fieldset>
-		<p>			
-			Rules for passwords:
+		<div id="element">
+			<p id="element">Rules for passwords:</p>
 			<ul> 
 				<li> It must contains at least one upper case</li> 
 				<li> It must contains at least one lower case</li> 
@@ -64,6 +64,7 @@
 				<li> It must contains at least one of the following character: @, #, $, %, !, /</li> 
 				<li> It must be between 8 and 32 characters long</li> 
 			</ul>
+		</div>
 	</div>
 </body>
 </html>

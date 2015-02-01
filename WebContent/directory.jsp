@@ -15,7 +15,7 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div id="content">
-		<table>
+		<table id="element">
 			<tr>
 				<td><b>First Name</b></td>
 				<td><b>Last Name</b></td>

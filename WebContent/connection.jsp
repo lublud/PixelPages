@@ -10,17 +10,17 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div id="content">
-		<form method="post" action="connection">
+		<form id="element" method="post" action="connection">
 			<fieldset>
 				<legend>Connection</legend>
 				<c:out value="${error}" />
 				<c:remove var="error" scope="session" />
 				<p>
-					<label for="login">Login</label><input type="text" name="login"
+					<label for="login">Login  </label><input type="text" name="login"
 						value="" size="16" maxlength="16" />
 				</p>
 				<p>
-					<label for="password">Password</label><input class="mandatory"
+					<label for="password">Password  </label><input class="mandatory"
 						type="password" name="password" size="16" maxlength="32" />
 				</p>
 				<p>

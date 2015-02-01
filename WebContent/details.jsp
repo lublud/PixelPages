@@ -12,7 +12,7 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div id="content">
-		<table>
+		<table id="element">
 			<tr>
 				<td><b>First name</b></td>
 				<td><c:out value="${person.getFirstName()}" /></td>
