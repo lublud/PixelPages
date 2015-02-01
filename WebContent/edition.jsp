@@ -27,7 +27,7 @@
 					</tr>
 					<tr>
 						<td>Birth date</td>
-						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthdate()}" /></td>
+						<td><fmt:formatDate dateStyle="long" value="${user.getBirthdate()}" /></td>
 					</tr>
 					<tr>
 						<td>Web site</td>

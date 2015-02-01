@@ -4,15 +4,17 @@
 		<img id="top_left" src="./images/logoamu.png"
 			alt="Aix-Marseille Université"
 			style="height: auto; width: auto; max-width: 250px;" />
-		<div id="top_center"><a id="top_center" href="${home}">
-		<pre id="top_center"> ______ _            _ ______                       
+		<div id="top_center">
+			<pre><a href="${home}">
+ ______ _            _ ______                       
 (_____ (_)          | (_____ \                      
  _____) ) _   _ ____| |_____) )___  ____  ____  ___ 
 |  ____/ ( \ / ) _  ) |  ____/ _  |/ _  |/ _  )/___)
 | |    | |) X ( (/ /| | |   ( ( | ( ( | ( (/ /|___ |
 |_|    |_(_/ \_)____)_|_|    \_||_|\_|| |\____|___/ 
-                                  (_____|           </pre>
-		</a></div>
+                                  (_____|           
+        	</a></pre>
+		</div>
 		<span id="top_right">
 			<c:choose>
 				<c:when test="${user == null}">
