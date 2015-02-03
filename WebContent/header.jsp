@@ -26,3 +26,6 @@
 			</c:choose>
 		</span>
 	</div>
+	<a href="https://github.com/lublud/PixelPages/issues">
+	<img id="bottom" src="./images/issue.png" alt="Report an issue" />
+	</a>

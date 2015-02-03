@@ -41,6 +41,12 @@ body
 	right: 40px;
 	position:absolute;
 }
+#bottom
+{
+	bottom: 20px;
+	right: 40px;
+	position: absolute;
+}
 #connect
 {
 	margin-top: 10px;
