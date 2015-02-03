@@ -83,18 +83,14 @@ public class Controller extends HttpServlet {
 
 			if (null == p.canConnect(p.getLogin(),
 					request.getParameter("oldPasswd"))) {
-				err += "Wrong password!";
+				err += "Wrong password! ";
 				changePass = false;
 			}
 
 			if (!request.getParameter("newPasswd").equals(
-					request.getParameter("newPasswdBis"))) {
-				err += "New password should be the same for both input.";
-				changePass = false;
-			}
-
-			if (!p.checkPasswd(request.getParameter("newPasswd"))) {
-				err += "No valid password.";
+					request.getParameter("newPasswdBis"))
+				 || !p.checkPasswd(request.getParameter("newPasswd"))) {
+				err += "Bad new password.";
 				changePass = false;
 			}
 
