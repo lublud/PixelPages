@@ -90,7 +90,7 @@ public class Controller extends HttpServlet {
 			if (!request.getParameter("newPasswd").equals(
 					request.getParameter("newPasswdBis"))
 				 || !p.checkPasswd(request.getParameter("newPasswd"))) {
-				err += "Bad new password.";
+				err += "New password incorrect.";
 				changePass = false;
 			}
 

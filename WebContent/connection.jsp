@@ -13,8 +13,6 @@
 		<form id="element" method="post" action="connection">
 			<fieldset>
 				<legend>Connection</legend>
-				<c:out value="${error}" />
-				<c:remove var="error" scope="session" />
 				<table id="form">
 					<tr>
 						<td>Login</td>
@@ -27,6 +25,10 @@
 				</table>
 				<br><input class="button" type="submit" name="OK" value="Connect" />
 			</fieldset>
+			<div id="error">
+				<c:out value="${error}" />
+				<c:remove var="error" scope="session" />
+			</div>
 		</form>
 	</div>
 </body>
